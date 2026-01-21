@@ -1,0 +1,28 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "relay",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-01-01",
+	"observability": {
+		"enabled": true
+	},
+	/**
+	 * D1 Database - Store sources, feedback, and issues
+	 */
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "relay-db",
+			"database_id": "a70cf5c4-550b-4c7c-81cd-b4c6d1107791"
+		}
+	],
+	/**
+	 * Workers AI - For sentiment analysis and summarization
+	 * Models used:
+	 * - @cf/huggingface/distilbert-sst-2-int8 (sentiment)
+	 * - @cf/mistral/mistral-7b-instruct-v0.2 (summaries)
+	 */
+	"ai": {
+		"binding": "AI"
+	}
+}
